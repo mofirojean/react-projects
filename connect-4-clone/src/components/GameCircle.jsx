@@ -1,11 +1,9 @@
 import React from 'react';
 import '../styles/Game.css';
-// shortcut to generate a component rafce
 
-const GameCircle = ({id, children, onCircleClicked}) => {
-
+const GameCircle = ({id, children, className, onCircleClicked}) => {
   return (
-    <div className={`gameCircle ${id % 2 === 0 ? "odd" : "even"}`} onClick={() => onCircleClicked(id)}>
+    <div className={`gameCircle player_0 ${className}`} onClick={() => onCircleClicked(id)}>
         {children}
     </div>
   )
