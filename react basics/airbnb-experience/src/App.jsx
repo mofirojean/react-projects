@@ -6,25 +6,25 @@ import Contact from "./components/Contact.jsx";
 function App() {
   let contacts  = [
     {
-      image:"../assets/mr-whiskerson.png",
+      image:"mr-whiskerson",
       name:"Mr. Whiskerson",
       phone:"(212) 555-1234",
       email:"mr.whiskaz@catnap.meow",
     },
     {
-      image:"../assets/fluffykins.png",
+      image:"fluffykins",
       name:"Fluffykins",
       phone:"(212) 555-2345",
       email:"fluff@me.com",
     },
     {
-      image:"../assets/felix.png",
+      image:"felix",
       name:"Felix",
       phone:"(212) 555-4567",
       email:"thecat@hotmail.com",
     },
     {
-      image:"../assets/pumpkin.png",
+      image:"pumpkin",
       name:"Pumpkin",
       phone:"(0800) CAT KING",
       email:"pumpkin@scrimba.com",

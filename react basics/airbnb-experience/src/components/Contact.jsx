@@ -20,5 +20,5 @@ export default function Contact({ contact }) {
 }
 
 function getImageUrl(name) {
-    return new URL(`${name}`, import.meta.url).href
+    return new URL(`../assets/${name}.png`, import.meta.url).href
 }
