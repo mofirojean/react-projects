@@ -1,5 +1,6 @@
 import phone from "../assets/phone-icon.png"
 import mail from "../assets/mail-icon.png"
+import {getImageUrl} from "../utils/image-url.utils.jsx";
 
 export default function Contact({ contact }) {
     return (
@@ -18,6 +19,3 @@ export default function Contact({ contact }) {
     )
 }
 
-function getImageUrl(name) {
-    return new URL(`../assets/${name}.png`, import.meta.url).href
-}

@@ -64,8 +64,16 @@ section {
 }
 
 .card {
-  width: 175px;
+  width: 200px;
+  position: relative;
   font-size: 0.75rem;
+}
+
+.cards-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
 }
 
 .card-image {
@@ -81,6 +89,16 @@ section {
 
 .card-star {
   height: 14px;
+}
+
+.card-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 
