@@ -3,14 +3,18 @@ import Meme from "./components/Meme.jsx";
 import Main from "./components/Main.jsx";
 
 function App() {
-
+    
   return (
-    <div>
-      <Header />
+      <div>
+          <Header />
       <Main>
           <Meme />
       </Main>
-    </div>
+          {/*<div className="container">
+              <img src="https://picsum.photos/640/360"/>
+              <button onClick={handleClick}>Click me</button>
+          </div>*/}
+      </div>
   )
 }
 
