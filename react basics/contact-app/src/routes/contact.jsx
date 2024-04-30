@@ -1,10 +1,24 @@
-import {Form, useLoaderData} from "react-router-dom";
-import {getContact} from "../data/contacts.js";
+import {Form, useFetcher, useFetchers, useLoaderData} from "react-router-dom";
+import {getContact, updateContact} from "../data/contacts.js";
 
 export async function loader({ params }) {
     const contact = await getContact(params.contactId);
-    return { contact };
+    if (!contact) {
+        throw new Response("", {
+            status: 404,
+            statusText: "Not Found",
+        });
+    }
+    return {contact};
 }
+
+export async function action({ request, params }) {
+    let formData = await request.formData();
+    return updateContact(params.contactId, {
+        favorite: formData.get("favorite") === "true",
+    });
+}
+
 
 export default function Contact() {
     const { contact } = useLoaderData();
@@ -68,11 +82,21 @@ export default function Contact() {
     );
 }
 
+/*
+* For these cases, we have the useFetcher hook.
+* It allows us to communicate with loaders and
+* actions without causing a navigation.
+* */
 function Favorite({ contact }) {
-    // yes, this is a `let` for later
+    const fetcher = useFetcher();
+
     let favorite = contact.favorite;
+    if (fetcher.formData) {
+        favorite = fetcher.formData.get("favorite") === "true";
+    }
+
     return (
-        <Form method="post">
+        <fetcher.Form method="post">
             <button
                 name="favorite"
                 value={favorite ? "false" : "true"}
@@ -84,6 +108,6 @@ function Favorite({ contact }) {
             >
                 {favorite ? "★" : "☆"}
             </button>
-        </Form>
+        </fetcher.Form>
     );
 }

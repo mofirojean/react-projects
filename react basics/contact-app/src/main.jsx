@@ -8,9 +8,16 @@ import Root, {
 } from "./routes/root.jsx";
 import ErrorPage from "./components/error-page.jsx";
 import Contact, {
-    loader as contactLoader
+    loader as contactLoader,
+    action as contactAction
 } from "./routes/contact.jsx";
-import EditContact from "./routes/edit.jsx";
+import EditContact, {
+    action as editAction
+} from "./routes/edit.jsx";
+import {
+    action as destroyAction
+} from "./routes/destroy.jsx";
+import Index from "./routes/index.jsx";
 
 /* To enable client side routing we need the Browser Router */
 const router = createBrowserRouter([
@@ -24,15 +31,25 @@ const router = createBrowserRouter([
         /* Setting the action on the route */
         action: rootAction,
         children: [
+            /* creating an index route which act as a default route */
+            { index: true, element: <Index /> },
             {
                 path: '/contacts/:contactId',
                 element: <Contact />,
-                loader: contactLoader
+                loader: contactLoader,
+                action: contactAction
             },
             {
                 path: '/contacts/:contactId/edit',
                 element: <EditContact />,
+                action: editAction,
                 loader: contactLoader
+            },
+            {
+                path: '/contacts/:contactId/destroy',
+                action: destroyAction,
+                /* creating a contextual error*/
+                errorElement: <div>Oops! There was an error.</div>
             }
         ]
     }
